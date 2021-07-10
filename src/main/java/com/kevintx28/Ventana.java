@@ -35,10 +35,8 @@ public class Ventana extends JFrame implements ActionListener {
     
     JButton boton_opciones;
 
-    JButton boton1;
-    JButton boton2;
-    JButton boton3;
-    JButton boton4;
+
+    JButton[][] boton_casilla;
 
     JScrollPane scrollPane = new JScrollPane();
 
@@ -99,21 +97,28 @@ public class Ventana extends JFrame implements ActionListener {
             JPanel panel_contenido = new JPanel();
             panel_contenido.setBackground(Color.GREEN);
             this.getContentPane().add(panel_contenido);     
+
+            String[] lista =  {"1 pollo","1/2 pollo","1/4 pollo", "1/8 pollo", "Parrillas", "Pizza personal", "Coca cola 1L", "Coca cola 2L", "Helado personal", "Helado de S/. 5", "Pastel personal de frutas"} ;
+            int tam_fila =  lista.length;
+            int tam_col = 1;
             // contai.repaint();
-            panel_contenido.setLayout(new GridLayout(2,2));
+            panel_contenido.setLayout(new GridLayout(tam_fila, tam_col));
          
            
             //Add panel_contenido to set up horizontal and vertical gaps
 
-            boton1 = new JButton("1 pollo");
-            boton2 = new JButton("1/2 pollo");
-            boton3 = new JButton("1/4 pollo");
-            boton4 = new JButton("1/8 pollo");
-            panel_contenido.add(boton1);
-            panel_contenido.add(boton2);
-            panel_contenido.add(boton3);
-            panel_contenido.add(boton4);
+            
+            
 
+            boton_casilla = new JButton[tam_fila][tam_col];
+
+            for (int i = 0; i < tam_fila; i++) {
+                for (int j = 0; j < tam_col; j++) {
+                    boton_casilla[i][j] = new JButton(lista[i]);
+                    panel_contenido.add(boton_casilla[i][j]);        
+                }   
+            }
+            
          }
     }
 }
