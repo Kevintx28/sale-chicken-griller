@@ -6,7 +6,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
@@ -14,10 +13,7 @@ import java.awt.Toolkit;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Color;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Label;
 /*
  * @author kevintx28!
  *
@@ -98,23 +94,15 @@ public class Ventana extends JFrame implements ActionListener {
             panel_contenido.setBackground(Color.GREEN);
             this.getContentPane().add(panel_contenido);     
 
-            String[] lista =  {"1 pollo","1/2 pollo","1/4 pollo", "1/8 pollo", "Parrillas", "Pizza personal", "Coca cola 1L", "Coca cola 2L", "Helado personal", "Helado de S/. 5", "Pastel personal de frutas"} ;
-            int tam_fila =  lista.length;
+            String[] carta =  {"1 pollo","1/2 pollo","1/4 pollo", "1/8 pollo", "Parrillas", "Pizza personal", "Coca cola 1L", "Coca cola 2L", "Helado personal", "Helado de S/. 5", "Pastel personal de frutas"} ;
+            int tam_fila =  carta.length;
             int tam_col = 1;
-            // contai.repaint();
+
             panel_contenido.setLayout(new GridLayout(tam_fila, tam_col));
-         
-           
-            //Add panel_contenido to set up horizontal and vertical gaps
-
-            
-            
-
             boton_casilla = new JButton[tam_fila][tam_col];
-
             for (int i = 0; i < tam_fila; i++) {
                 for (int j = 0; j < tam_col; j++) {
-                    boton_casilla[i][j] = new JButton(lista[i]);
+                    boton_casilla[i][j] = new JButton(carta[i]);
                     panel_contenido.add(boton_casilla[i][j]);        
                 }   
             }
