@@ -94,7 +94,15 @@ public class Ventana extends JFrame implements ActionListener {
             panel_contenido.setBackground(Color.GREEN);
             this.getContentPane().add(panel_contenido);     
 
-            String[] carta =  {"1 pollo","1/2 pollo","1/4 pollo", "1/8 pollo", "Parrillas", "Pizza personal", "Coca cola 1L", "Coca cola 2L", "Helado personal", "Helado de S/. 5", "Pastel personal de frutas"} ;
+            Comida primer_comida = new Comida(); 
+            primer_comida.modificarNombre("1/4 de pollo");
+            primer_comida.insertarPrecio(10);
+
+            Comida segunda_comida = new Comida(); 
+            segunda_comida.modificarNombre("Pollo a la plancha con tosino");
+            segunda_comida.insertarPrecio(40);
+
+            Comida[] carta =  {primer_comida, segunda_comida} ;
             int tam_fila =  carta.length;
             int tam_col = 1;
 
@@ -102,7 +110,7 @@ public class Ventana extends JFrame implements ActionListener {
             boton_casilla = new JButton[tam_fila][tam_col];
             for (int i = 0; i < tam_fila; i++) {
                 for (int j = 0; j < tam_col; j++) {
-                    boton_casilla[i][j] = new JButton(carta[i]);
+                    boton_casilla[i][j] = new JButton(carta[i].recuperarNombre()+": "+ carta[i].recuperarPrecio() );
                     panel_contenido.add(boton_casilla[i][j]);        
                 }   
             }
