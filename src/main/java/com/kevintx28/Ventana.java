@@ -83,7 +83,31 @@ public class Ventana extends JFrame implements ActionListener {
 
         Container contai=this.getContentPane();
         contai.remove(scrollPane);
+        Comida primer_comida = new Comida(); 
+        primer_comida.modificarNombre("1/4 de pollo");
+        primer_comida.insertarPrecio(10);
+        primer_comida.insertarCodigo(111);
 
+        Comida segunda_comida = new Comida(); 
+        segunda_comida.modificarNombre("Pollo a la plancha con tosino");
+        segunda_comida.insertarPrecio(40);
+        segunda_comida.insertarCodigo(222);
+
+        Comida tercera_comida = new Comida(); 
+        tercera_comida.modificarNombre("1/2 de pollo");
+        tercera_comida.insertarPrecio(40);
+        tercera_comida.insertarCodigo(333);
+
+        Comida cuarta_comida = new Comida(); 
+        cuarta_comida.modificarNombre("1/8 de pollo");
+        cuarta_comida.insertarPrecio(40);
+        cuarta_comida.insertarCodigo(444);
+
+        Comida[] carta =  {primer_comida, segunda_comida, tercera_comida, cuarta_comida} ;
+            int tam_fila =  carta.length;
+            int tam_col = 1;
+
+       
 
          if(evento.getSource() == boton_opciones) {
             System.out.println("Hola boton opciones seleccionado");
@@ -94,27 +118,44 @@ public class Ventana extends JFrame implements ActionListener {
             panel_contenido.setBackground(Color.GREEN);
             this.getContentPane().add(panel_contenido);     
 
-            Comida primer_comida = new Comida(); 
-            primer_comida.modificarNombre("1/4 de pollo");
-            primer_comida.insertarPrecio(10);
+           
 
-            Comida segunda_comida = new Comida(); 
-            segunda_comida.modificarNombre("Pollo a la plancha con tosino");
-            segunda_comida.insertarPrecio(40);
 
-            Comida[] carta =  {primer_comida, segunda_comida} ;
-            int tam_fila =  carta.length;
-            int tam_col = 1;
+            
 
             panel_contenido.setLayout(new GridLayout(tam_fila, tam_col));
+            
             boton_casilla = new JButton[tam_fila][tam_col];
             for (int i = 0; i < tam_fila; i++) {
                 for (int j = 0; j < tam_col; j++) {
                     boton_casilla[i][j] = new JButton(carta[i].recuperarNombre()+": "+ carta[i].recuperarPrecio() );
+                    
+                    boton_casilla[i][j].putClientProperty("id", carta[i].recuperarCodigo());
+                    boton_casilla[i][j].addActionListener(this);
                     panel_contenido.add(boton_casilla[i][j]);        
                 }   
             }
+
+            
             
          }
+
+         for (int i = 0; i < tam_fila; i++) {
+            for (int j = 0; j < tam_col; j++) {
+                if(evento.getSource() == boton_casilla[i][j]) {
+                    int codigo_seleccionado = (int) boton_casilla[i][j].getClientProperty("id");   
+
+                    for(int cc=0; cc<carta.length; cc++){
+                        if(codigo_seleccionado == carta[cc].recuperarCodigo()) {
+                            System.out.println(carta[cc].recuperarNombre());
+                        }
+                    }
+                    
+                    
+
+                    
+                 }
+            }   
+        }
     }
 }

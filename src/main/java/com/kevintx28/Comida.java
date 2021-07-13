@@ -2,7 +2,7 @@ package com.kevintx28;
 
 class Comida {
     String nombre;
-    //String codigo;
+    int codigo;
     double precio;
 
     public void modificarNombre(String nuevoNombre) {
@@ -19,5 +19,15 @@ class Comida {
     public double recuperarPrecio() {
         return this.precio;
     }
+    
+    
+
+    public void insertarCodigo(int nuevoCodigo) {
+        this.codigo = nuevoCodigo;
+    }
+    public int recuperarCodigo() {
+        return this.codigo;
+    }
+    
 
 }
